@@ -35,48 +35,60 @@
             border: 2px solid black;
             height: 600px;
         }
+        .analog::before{
+            background: url('clock_img.png') no-repeat center center/cover;
+            content: "";
+            position: absolute;
+            top: 498px;;
+            left: 538px;
+            width: 450px;
+            height: 450px;
+            z-index: -1;
+            opacity: 0.9;
+        }
         
         #hours_box{
             
-            border-bottom: 5px solid black;
-            width: 100px;
+            border-bottom: 7px solid black;
+            width: 80px;
             position: relative;
             top: 290px;
             left: 525px;
             transform-origin: 100% 50%;
-
+            opacity: 0.6;
+            border-radius: 10px;
+            
             
         }
         
         #minutes_box{
-            width: 200px;
+            width: 130px;
             border-bottom: 4px solid black;
             position: relative;
             top: 290px;
-            left: 425px;
+            left: 475px;
             transform-origin: 100% 50%;
+            opacity: 0.8;
+            
             
             
         }
         
         #seconds_box{
-            width: 300px;
+            width: 170px;
             border-bottom: 2px solid black; 
             position: relative;
             top: 290px;
-            left: 325px; 
+            left: 435px; 
             transform-origin: 100% 50%;
-
+            
         }
     </style>
 </head>
 
 <body>
 
-    <h1>
-        Digital Clock
-    </h1>
-
+    <h1>Clock</h1>
     <div class="clock">
         <div class="box">
             <p id="hours">10</p>
@@ -91,7 +103,6 @@
             <p id="kris">AM</p>
         </div>
     </div>
-
     <div class="analog">
         <div id="hours_box">
             
@@ -126,9 +137,9 @@
             document.getElementById('minutes').innerHTML = m;
             document.getElementById('seconds').innerHTML = s;
 
-            h = 30 * h + m / 2;
-            m= 6 * m;
-            s = 6 * s;
+            h = 30 * h + m / 2 + 90;
+            m= 6 * m + 90 ;
+            s = 6 * s + 90 ;
             console.log(h+" "+m+" "+s);
             hours_box.style.transform = `rotate(${h}deg)`;
             minutes_box.style.transform= `rotate(${m}deg)`;
