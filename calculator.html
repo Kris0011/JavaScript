@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .calc {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            /* width: 100px; */
+            border: 2px solid black;
+        }
+        .calc button{
+            width: 50px;
+            margin: 4px;
+        }
+        .calc .display{
+            background-color: rgb(59, 59, 59);
+            color: azure;
+            width: 240px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+        .calc p{
+            text-align: right;
+            padding-right: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>
+        Calculator
+    </h1>
+    <div class="calc">
+            <div class="display">
+                <p  id="display">0</p>
+            </div>
+            <div>
+                <button class="num" onclick="count(7)">7</button>
+                <button class="num" onclick="count(8)">8</button>
+                <button class="num" onclick="count(9)">9</button>
+                <button class="num">x</button>
+            </div>
+            <div>
+                <button class="num" onclick="count(4)">4</button>
+                <button class="num" onclick="count(5)">5</button>
+                <button class="num" onclick="count(6)">6</button>
+                <button class="num" >/</button>
+            </div>
+            <div>
+                <button class="num" onclick="count(1)">1</button>
+                <button class="num" onclick="count(2)">2</button>
+                <button class="num" onclick="count(3)">3</button>
+                <button class="num" >-</button>
+
+            </div>
+            <div>
+                <button class="num" onclick="count(0)">0</button>
+                <button class="num">.</button>
+                <button class="num" type="submit" >=</button>
+                <button class="num">+</button>
+
+            </div>
+           
+    </div>
+
+
+    <script>
+        var d = document.getElementById('display').innerHTML;
+        function count(num){
+
+            d = d*10+num;
+            document.getElementById('display').innerHTML = d ;
+
+            console.log(d);
+        }
+        console.log(d); 
+
+    </script>
+</body>
+
+</html>
