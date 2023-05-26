@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Clock</title>
+    <style>
+        .clock{
+            display: flex;
+            justify-content: center;
+        }
+
+        .box{
+            margin: 5px;
+            padding: 15px;
+            background-color: rgb(211, 164, 255);
+            width: 80px;
+            border-radius: 10px;
+        }
+        .clock p{
+            font-size: 50px;
+            margin: 0px;
+            text-align: center;
+        }
+        
+        h1{
+            font-size: 70px;
+            text-align: center;
+
+        }
+        .analog{
+            margin: 150px;
+            border: 2px solid black;
+            height: 600px;
+        }
+        
+        #hours_box{
+            
+            border-bottom: 5px solid black;
+            width: 100px;
+            position: relative;
+            top: 290px;
+            left: 525px;
+            transform-origin: 100% 50%;
+
+            
+        }
+        
+        #minutes_box{
+            width: 200px;
+            border-bottom: 4px solid black;
+            position: relative;
+            top: 290px;
+            left: 425px;
+            transform-origin: 100% 50%;
+            
+            
+        }
+        
+        #seconds_box{
+            width: 300px;
+            border-bottom: 2px solid black; 
+            position: relative;
+            top: 290px;
+            left: 325px; 
+            transform-origin: 100% 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>
+        Digital Clock
+    </h1>
+
+    <div class="clock">
+        <div class="box">
+            <p id="hours">10</p>
+        </div>
+        <div class="box">
+            <p id="minutes">10</p>
+        </div>
+        <div class="box">
+            <p id="seconds">10</p>
+        </div>
+        <div class="box">
+            <p id="kris">AM</p>
+        </div>
+    </div>
+
+    <div class="analog">
+        <div id="hours_box">
+            
+        </div>
+        <div id="minutes_box">
+            
+        </div>
+        <div id="seconds_box">
+            
+        </div>
+    </div>
+
+    <script>
+
+        var clock = setInterval(myfun,1000);
+
+        function myfun(){
+            var d = new Date();
+            var h = d.getHours();
+
+            if(h>12){
+                h=h-12;
+                document.getElementById('kris').innerHTML = "PM" ;
+            }
+            else{
+                document.getElementById('kris').innerHTML = "AM" ;
+
+            }
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+            document.getElementById('hours').innerHTML = h;
+            document.getElementById('minutes').innerHTML = m;
+            document.getElementById('seconds').innerHTML = s;
+
+            h = 30 * h + m / 2;
+            m= 6 * m;
+            s = 6 * s;
+            console.log(h+" "+m+" "+s);
+            hours_box.style.transform = `rotate(${h}deg)`;
+            minutes_box.style.transform= `rotate(${m}deg)`;
+            seconds_box.style.transform = `rotate(${s}deg)`;
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>
