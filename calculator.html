@@ -13,7 +13,7 @@
             justify-content: space-between;
             align-items: center;
             /* width: 100px; */
-            border: 2px solid black;
+            /* border: 2px solid black; */
         }
         .calc button{
             width: 50px;
@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <h1>
+    <h1 align="center">
         Calculator
     </h1>
     <div class="calc">
@@ -45,35 +45,35 @@
             <div>
                 <button class="num">%</button>
                 <button class="num">C</button>
-                <button class="num">CE</button>
+                <button class="num" onclick="change('ce')">CE</button>
                 <button class="num" onclick="change('del')";>DEL</button>
                 
 
             </div>
             <div>
-                <button class="num" onclick="count(7)">7</button>
-                <button class="num" onclick="count(8)">8</button>
-                <button class="num" onclick="count(9)">9</button>
+                <button class="num" onclick="count('7')">7</button>
+                <button class="num" onclick="count('8')">8</button>
+                <button class="num" onclick="count('9')">9</button>
                 <button class="num" onclick="opration('x')">x</button>
             </div>
             <div>
-                <button class="num" onclick="count(4)">4</button>
-                <button class="num" onclick="count(5)">5</button>
-                <button class="num" onclick="count(6)">6</button>
+                <button class="num" onclick="count('4')">4</button>
+                <button class="num" onclick="count('5')">5</button>
+                <button class="num" onclick="count('6')">6</button>
                 <button class="num" onclick="opration('/')">/</button>
             </div>
             <div>
-                <button class="num" onclick="count(1)">1</button>
-                <button class="num" onclick="count(2)">2</button>
-                <button class="num" onclick="count(3)">3</button>
+                <button class="num" onclick="count('1')">1</button>
+                <button class="num" onclick="count('2')">2</button>
+                <button class="num" onclick="count('3')">3</button>
                 <button class="num" onclick="opration('-')">-</button>
 
             </div>
             <div>
-                <button class="num" onclick="count(0)">0</button>
+                <button class="num" onclick="count('0')">0</button>
                 <button class="num">.</button>
-                <button class="num" type="submit" >=</button>
-                <button class="num"onclick="opration('+')">+</button>
+                <button class="num" onclick="submit()">=</button>
+                <button class="num" onclick="opration('+')">+</button>
             </div>
            
     </div>
@@ -81,25 +81,56 @@
 
     <script>
         var d = document.getElementById('display').innerHTML;
-
-        var fvalue = d;
+       
         function count(num){
 
-            d = d*10+num;
-            document.getElementById('display').innerHTML = d ;
+            if(d=='0'){
+                d = num;
+            }
+            else{
+
+                d = d + num ;
+            }
+            document.getElementById('display').innerHTML = d;
 
         }
         function change(optn){
             if(optn == 'del'){
-             var k = d % 10 ;
-             d = d - k ;
-             d = d/10;
-             document.getElementById('display').innerHTML = d;
+             
+                d = d.slice(0, -1); 
+                document.getElementById('display').innerHTML = d;
 
             }
-            console.log(d);
+            else if(optn == 'ce'){
+                d = 0;
+                document.getElementById('display').innerHTML = d;
+
+            }
 
         }
+
+        function opration(sign){
+            if(sign == 'x'){
+                sign = '*';
+            }
+            d = d + (sign);
+            document.getElementById('display').innerHTML = d;
+
+        }
+
+        function submit(){
+            d = eval(d);
+            console.log(d);
+            if(d == null){
+                d = "Error";
+            }
+            document.getElementById('display').innerHTML = d;
+
+        }
+        //  if(!d){
+        //     d = '0';
+        //     document.getElementById('display').innerHTML = d ;
+        // }
 
     </script>
 </body>
