@@ -12,25 +12,40 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            background-color: rgb(246, 119, 255);
+            width: fit-content;
+            padding: 10px;
+            border-radius: 5%;
+            margin: auto;
+
             /* width: 100px; */
             /* border: 2px solid black; */
         }
-        .calc button{
-            width: 50px;
+
+        .calc button {
+            width: 30px;
+            height: 30px;
             margin: 4px;
+            border-radius: 100%;
+            border: 1px solid red;
+            font-size: 10px;
         }
-        .calc .display{
+        .calc button:active{
+            background-color: rgb(113, 113, 113);
+        }
+
+        .calc .display {
             background-color: rgb(59, 59, 59);
             color: azure;
-            width: 240px;
+            width: 200px;
             margin-top: 5px;
             border-radius: 5px;
         }
-        .calc p{
+
+        .calc p {
             text-align: right;
             padding-right: 5px;
         }
-
     </style>
 </head>
 
@@ -39,69 +54,72 @@
         Calculator
     </h1>
     <div class="calc">
-            <div class="display">
-                <p  id="display">0</p>
-            </div>
-            <div>
-                <button class="num">%</button>
-                <button class="num">C</button>
-                <button class="num" onclick="change('ce')">CE</button>
-                <button class="num" onclick="change('del')";>DEL</button>
-                
+        <div class="display">
+            <p id="display">0</p>
+        </div>
+        <div>
+            <button class="num" onclick="opration('%')">%</button>
+            <button class="num"  onclick="change('ce')">C</button>
+            <button class="num" onclick="change('ce')">CE</button>
+            <button class="num" onclick="change('del')">DEL</button>
 
-            </div>
-            <div>
-                <button class="num" onclick="count('7')">7</button>
-                <button class="num" onclick="count('8')">8</button>
-                <button class="num" onclick="count('9')">9</button>
-                <button class="num" onclick="opration('x')">x</button>
-            </div>
-            <div>
-                <button class="num" onclick="count('4')">4</button>
-                <button class="num" onclick="count('5')">5</button>
-                <button class="num" onclick="count('6')">6</button>
-                <button class="num" onclick="opration('/')">/</button>
-            </div>
-            <div>
-                <button class="num" onclick="count('1')">1</button>
-                <button class="num" onclick="count('2')">2</button>
-                <button class="num" onclick="count('3')">3</button>
-                <button class="num" onclick="opration('-')">-</button>
 
-            </div>
-            <div>
-                <button class="num" onclick="count('0')">0</button>
-                <button class="num">.</button>
-                <button class="num" onclick="submit()">=</button>
-                <button class="num" onclick="opration('+')">+</button>
-            </div>
-           
+        </div>
+        <div>
+            <button class="num" onclick="count('7')">7</button>
+            <button class="num" onclick="count('8')">8</button>
+            <button class="num" onclick="count('9')">9</button>
+            <button class="num" onclick="opration('x')">x</button>
+        </div>
+        <div>
+            <button class="num" onclick="count('4')">4</button>
+            <button class="num" onclick="count('5')">5</button>
+            <button class="num" onclick="count('6')">6</button>
+            <button class="num" onclick="opration('/')">/</button>
+        </div>
+        <div>
+            <button class="num" onclick="count('1')">1</button>
+            <button class="num" onclick="count('2')">2</button>
+            <button class="num" onclick="count('3')">3</button>
+            <button class="num" onclick="opration('-')">-</button>
+
+        </div>
+        <div>
+            <button class="num" onclick="count('0')">0</button>
+            <button class="num">.</button>
+            <button class="num" onclick="submit()">=</button>
+            <button class="num" onclick="opration('+')">+</button>
+        </div>
+
     </div>
 
 
     <script>
         var d = document.getElementById('display').innerHTML;
-       
-        function count(num){
 
-            if(d=='0'){
+        function count(num) {
+            if (d == '0' || d == "Syntax Error") {
                 d = num;
             }
-            else{
+            else {
 
-                d = d + num ;
+                d = d + num;
             }
             document.getElementById('display').innerHTML = d;
 
         }
-        function change(optn){
-            if(optn == 'del'){
-             
-                d = d.slice(0, -1); 
+        function change(optn) {
+            if (optn == 'del') {
+
+                d = d.slice(0, -1);
+                if(d == ''){
+                    d = '0';
+                }
                 document.getElementById('display').innerHTML = d;
 
+
             }
-            else if(optn == 'ce'){
+            else if (optn == 'ce') {
                 d = 0;
                 document.getElementById('display').innerHTML = d;
 
@@ -109,8 +127,8 @@
 
         }
 
-        function opration(sign){
-            if(sign == 'x'){
+        function opration(sign) {
+            if (sign == 'x') {
                 sign = '*';
             }
             d = d + (sign);
@@ -118,14 +136,15 @@
 
         }
 
-        function submit(){
-            d = eval(d);
-            console.log(d);
-            if(d == null){
-                d = "Error";
-            }
-            document.getElementById('display').innerHTML = d;
+        function submit() {
+            try {
+                d = eval(d);
+                document.getElementById('display').innerHTML = d;
+            } catch (error) {
+                d = "Syntax Error";
+                document.getElementById('display').innerHTML = d;
 
+            }
         }
         //  if(!d){
         //     d = '0';
