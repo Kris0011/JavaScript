@@ -7,47 +7,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Numerical Methods</title>
     <style>
-        #myForm {
+        form {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
+            /* border: 2px solid black; */
+            margin: 10px;
+            padding: 10px;
 
         }
+        form h2{
+            font-size: 18px;
+            margin: 2px;
+        }
+
+        .btn{
+            border-radius: 4px;
+            border: 1px solid black ;
+        }
+
+        .btn:hover{
+            cursor: pointer;
+        }
+        .btn:active{
+            color: red;
+        }
+        form div{
+            margin: 3px;
+        }
+
+        form button{
+            width: 100px;
+        }
+
     </style>
 
 
 </head>
 
 <body>
+
+    <h1>Welcome to Maths Zone</h1>
+    <h2>Numerical Methods</h2>
+
     <form id="myForm">
         <div>
-            <label for="functionInput">Function:</label>
+            <label for="functionInput">Write dy/dx :</label>
             <input type="text" id="functionInput" >
         </div>
 
         <div>
-            <label for="x0Input">x0:</label>
+            <label for="x0Input">x0 value:</label>
             <input type="number" id="x0Input">
         </div>
         <div>
-            <label for="y0Input">y0:</label>
+            <label for="y0Input">y0 value at x0:</label>
             <input type="number" id="y0Input">
         </div>
        
         <div>
-            <label for="stepHeightInput">h:</label>
+            <label for="stepHeightInput">Step Height(h):</label>
             <input type="text" id="stepHeightInput">
         </div>
         <div>
-            <label for="y0Input">n:</label>
+            <label for="y0Input">n for xn:</label>
             <input type="text" id="nInput">
         </div>
+        <div>
+            <select name="method" id="method">
+                <option value="Euler Method">Euler Method</option>
+                <option value="Improved Euler Method">Improved Euler Method</option>
+                <option value="Euler Method">Runge-Kutta's Method</option>
+            </select>
+        </div>
+        <button type="reset">Reset</button>
         <button type="submit">Solve</button>
+        <div id="output"></div>
+
     </form>
 
-    <div id="output"></div>
+   
 
     <script src="script.js"></script>
 </body>
